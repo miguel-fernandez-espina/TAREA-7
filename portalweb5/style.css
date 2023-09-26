@@ -1,0 +1,91 @@
+/* Resetear estilos predeterminados del formulario */
+form {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+/* Estilos generales para el formulario */
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f4f4f4;
+  border-radius: 5px;
+}
+
+h1.center {
+  text-align: center;
+}
+
+
+
+
+table {
+  width: 100%;
+  margin: 0 auto;
+}
+
+td {
+  padding: 10px;
+}
+
+/* Estilos para los campos de entrada de texto */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Estilos para los botones */
+button {
+  padding: 10px 20px;
+  margin-right: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Estilos para el botón dentro del segundo formulario */
+div form button {
+
+  background-color: #28a745;
+}
+
+/* Cambiar el color de fondo del campo de entrada en foco */
+input:focus,
+select:focus {
+  border-color: #007bff;
+}
+ 
+td, th {
+    border: 1px solid #283747;
+    padding: 3px;
+    text-align: left;   
+}
+  
+td:nth-child(n + 3),
+th:nth-child(n + 3) {
+    text-align: center;
+}
+ 
+tbody tr:hover {
+    background-color: #2B874B;
+}
+ 
+thead {
+    background-color: #224364 ;
+    color: white;
+}
+
+a {
+    background-color: ;
+}

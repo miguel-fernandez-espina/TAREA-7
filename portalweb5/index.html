@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="style.css" rel="stylesheet" >
+    
+    <title>Resgistros de CLientes</title>
+  </head>
+  <body>
+
+
+    <div class="container" >
+
+      
+    <br/><br/>
+    <form method="post" action="registro.php">
+    <table >
+
+      <td colspan='2' align='center'>
+        <h1 class="center" >Formulario de Registro</h1>
+
+        <br>  <br>  <br>
+ </td>
+       
+    <tr>
+    <td>Rut:</td>
+    <td> <input type="text" id="validarrut"  name="Rut" placeholder="16455134-3" required oninput="checkRut(this)"  > </td>
+    </tr>
+    <script>
+  function checkRut(validarrut) {
+    var valor = validarrut.value.replace('.', '');
+    valor = valor.replace('-', '');
+    cuerpo = valor.slice(0, -1);
+    dv = valor.slice(-1).toUpperCase();
+    validarrut.value = cuerpo + '-' + dv
+    if (cuerpo.length < 7) {
+      validarrut.setCustomValidity("RUT Incompleto");
+      return false;
+    }
+    suma = 0;
+    multiplo = 2;
+    for (i = 1; i <= cuerpo.length; i++) {
+      index = multiplo * valor.charAt(cuerpo.length - i);
+      suma = suma + index;
+      if (multiplo < 7) {
+        multiplo = multiplo + 1;
+      } else {
+        multiplo = 2;
+      }
+    }
+    dvEsperado = 11 - (suma % 11);
+    dv = (dv == 'K') ? 10 : dv;
+    dv = (dv == 0) ? 11 : dv;
+    if (dvEsperado != dv) {
+      validarrut.setCustomValidity("RUT Inválido");
+      return false;
+    }
+    validarrut.setCustomValidity('');
+  }
+</script>
+    <tr>
+    <td>Nombre:</td>
+    <td> <input type="text" name="Nombre" placeholder="Nombre" /> </td>
+    </tr>
+      <tr>
+    <td>Apellido:</td>
+    <td> <input type="text"  name="Apellido" placeholder="Apellido"  /> </td>
+    </tr>
+    <tr>
+    <td>Direccion:</td>
+    <td> <input type="text"  name="Direccion" placeholder="Direccion"   /> </td>
+    </tr>
+    <tr>
+    <td>Email:</td>
+    <td> <input type="email" id="email"  name="Email"  required placeholder="mail@mail.com" ><br /> </td>
+    </tr>
+    <tr>
+    <td>Telefono:</td>
+    <td> <input type="tel"  name="Telefono" required placeholder="+569 89670254"  id="telefono"  oninput="formatPhoneNumber(this)" ><br>  </td>
+    </tr>
+    <script>
+        function formatPhoneNumber(input) {
+            // Elimina todos los caracteres que no sean dígitos
+            const phoneNumber = input.value.replace(/\D/g, '');
+
+            // Verifica si el número es válido (9 dígitos)
+            if (phoneNumber.length === 8) {
+                // Aplica el formato chileno (+569)
+                input.value = `(+569) ${phoneNumber}`;
+            }
+        }
+    </script>
+    <tr>
+    <td>Numero_Caso:</td>
+    <td> <input type="text"  name="Numero_Caso"  placeholder="Ingrese numero de caso" >   </td>
+    </tr>
+    <td>Descripcion_Caso:</td>
+    <td> <input type="text"  name="Descripcion_Caso" placeholder="Descripción del caso" >   </td>
+    </tr>
+    <td>Fecha_Inicio:</td>
+    <td> <input type="date"  name="Fecha_Inicio" value="fecha %y - %m - %d "  /> </td>
+    </tr>
+    <td>Estado_Caso:</td>
+    <td>
+
+      <select  name="Estado_Caso">
+    <option value="" selected>Seleccionar</option>
+    <option value="Activo">Activo</option>
+    <option value="En Proceso">En Proceso</option>
+    <option value="Cerrado">Cerrado</option>
+  </select>
+   </td>
+    </tr>
+    <td>Descripcion_Sentencia:</td>
+    <td> <input type="text"  name="Descripcion_Sentencia" id="miinput"  /> </td>
+    </tr>
+    <td>Fecha_Cierre:</td>
+    <td> <input type="date" name="Fecha_Cierre"   value="fecha %y - %m - %d " /> </td>
+    </tr>
+     
+    <td colspan='5' align='center'>
+    <button type="submit" name="ingresar" value="Ingresar" >Ingresar</button>       
+    <button type="submit" name="modificar" value="Modificar" >Modificar</button>  
+    <button type="submit" name="consultar" value="Consultar" >Consultar</button> 
+    <button type="submit" name="eliminar" value="Eliminar" >Eliminar</button> 
+   <button type="reset" name="limpiar" value="Cancelar" >Borrar</button></td>
+   
+    </table>  
+    </form>  
+    </div>   
+  </body>
+</html>
